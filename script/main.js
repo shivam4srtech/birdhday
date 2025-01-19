@@ -1,273 +1,103 @@
-// trigger to play music in the background with sweetalert
-window.addEventListener('load', () => {
-    Swal.fire({
-        title: 'Do you want to play music in the background?',
-        // text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            document.querySelector('.song').play();
-            animationTimeline();
-        } else {
-            animationTimeline();
-        }
-    });
-});
+const balloonContainer = document.getElementById("balloon-container");
 
-
-// animation timeline
-const animationTimeline = () => {
-    // split chars that needs to be animated individually
-    const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
-    const hbd = document.getElementsByClassName("wish-hbd")[0];
-
-    textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
-        .split("")
-        .join("</span><span>")}</span`;
-
-    hbd.innerHTML = `<span>${hbd.innerHTML
-        .split("")
-        .join("</span><span>")}</span`;
-
-    const ideaTextTrans = {
-        opacity: 0,
-        y: -20,
-        rotationX: 5,
-        skewX: "15deg"
-    }
-
-    const ideaTextTransLeave = {
-        opacity: 0,
-        y: 20,
-        rotationY: 5,
-        skewX: "-15deg"
-    }
-
-    // timeline
-    const tl = new TimelineMax();
-
-    tl.to(".container", 0.6, {
-        visibility: "visible"
-    })
-    .from(".one", 0.7, {
-        opacity: 0,
-        y: 10
-    })
-    .from(".two", 0.4, {
-        opacity: 0,
-        y: 10
-    })
-    .to(".one",
-        0.7,
-        {
-            opacity: 0,
-            y: 10
-        },
-    "+=3.5")
-    .to(".two",
-        0.7,
-        {
-            opacity: 0,
-            y: 10
-        },
-    "-=1")
-    .from(".three", 0.7, {
-        opacity: 0,
-        y: 10
-    })
-    .to(".three",
-        0.7,
-        {
-            opacity: 0,
-            y: 10
-        },
-    "+=3")
-    .from(".four", 0.7, {
-        scale: 0.2,
-        opacity: 0,
-    })
-    .from(".fake-btn", 0.3, {
-        scale: 0.2,
-        opacity: 0,
-    })
-    .staggerTo(
-        ".hbd-chatbox span",
-        1.5, {
-            visibility: "visible",
-        },
-        0.05
-    )
-    .to(".fake-btn", 0.1, {
-        backgroundColor: "rgb(127, 206, 248)",
-    },
-    "+=4")
-    .to(
-        ".four",
-        0.5, {
-            scale: 0.2,
-            opacity: 0,
-            y: -150
-        },
-    "+=1")
-    .from(".idea-1", 0.7, ideaTextTrans)
-    .to(".idea-1", 0.7, ideaTextTransLeave, "+=2.5")
-    .from(".idea-2", 0.7, ideaTextTrans)
-    .to(".idea-2", 0.7, ideaTextTransLeave, "+=2.5")
-    .from(".idea-3", 0.7, ideaTextTrans)
-    .to(".idea-3 strong", 0.5, {
-        scale: 1.2,
-        x: 10,
-        backgroundColor: "rgb(21, 161, 237)",
-        color: "#fff",
-    })
-    .to(".idea-3", 0.7, ideaTextTransLeave, "+=2.5")
-    .from(".idea-4", 0.7, ideaTextTrans)
-    .to(".idea-4", 0.7, ideaTextTransLeave, "+=2.5")
-    .from(
-        ".idea-5",
-        0.7, {
-            rotationX: 15,
-            rotationZ: -10,
-            skewY: "-5deg",
-            y: 50,
-            z: 10,
-            opacity: 0,
-        },
-        "+=1.5"
-    )
-    .to(
-        ".idea-5 span",
-        0.7, {
-            rotation: 90,
-            x: 8,
-        },
-        "+=1.4"
-    )
-    .to(
-        ".idea-5",
-        0.7, {
-            scale: 0.2,
-            opacity: 0,
-        },
-        "+=2"
-    )
-    .staggerFrom(
-        ".idea-6 span",
-        0.8, {
-            scale: 3,
-            opacity: 0,
-            rotation: 15,
-            ease: Expo.easeOut,
-        },
-        0.2
-    )
-    .staggerTo(
-        ".idea-6 span",
-        0.8, {
-            scale: 3,
-            opacity: 0,
-            rotation: -15,
-            ease: Expo.easeOut,
-        },
-        0.2,
-        "+=1.5"
-    )
-    .staggerFromTo(
-        ".baloons img",
-        2.5, {
-            opacity: 0.9,
-            y: 1400,
-        }, {
-            opacity: 1,
-            y: -1000,
-        },
-        0.2
-    )
-    .from(
-        ".profile-picture",
-        0.5, {
-            scale: 3.5,
-            opacity: 0,
-            x: 25,
-            y: -25,
-            rotationZ: -45,
-        },
-        "-=2"
-    )
-    .from(".hat", 0.5, {
-        x: -100,
-        y: 350,
-        rotation: -180,
-        opacity: 0,
-    })
-    .staggerFrom(
-        ".wish-hbd span",
-        0.7, {
-            opacity: 0,
-            y: -50,
-            // scale: 0.3,
-            rotation: 150,
-            skewX: "30deg",
-            ease: Elastic.easeOut.config(1, 0.5),
-        },
-        0.1
-    )
-    .staggerFromTo(
-        ".wish-hbd span",
-        0.7, {
-            scale: 1.4,
-            rotationY: 150,
-        }, {
-            scale: 1,
-            rotationY: 0,
-            color: "#ff69b4",
-            ease: Expo.easeOut,
-        },
-        0.1,
-        "party"
-    )
-    .from(
-        ".wish h5",
-        0.5, {
-            opacity: 0,
-            y: 10,
-            skewX: "-15deg",
-        },
-        "party"
-    )
-    .staggerTo(
-        ".eight svg",
-        1.5, {
-            visibility: "visible",
-            opacity: 0,
-            scale: 80,
-            repeat: 3,
-            repeatDelay: 1.4,
-        },
-        0.3
-    )
-    .to(".six", 0.5, {
-        opacity: 0,
-        y: 30,
-        zIndex: "-1",
-    })
-    .staggerFrom(".nine p", 1, ideaTextTrans, 1.2)
-    .to(
-        ".last-smile",
-        0.5, {
-            rotation: 90,
-        },
-        "+=1"
-    );
-
-    // Restart Animation on click
-    const replyBtn = document.getElementById("replay");
-    replyBtn.addEventListener("click", () => {
-        tl.restart();
-    });
+function random(num) {
+  return Math.floor(Math.random() * num);
 }
+
+function getRandomStyles() {
+  var r = random(255);
+  var g = random(255);
+  var b = random(255);
+  var mt = random(200);
+  var ml = random(50);
+  var dur = random(5) + 5;
+  return `
+  background-color: rgba(${r},${g},${b},0.7);
+  color: rgba(${r},${g},${b},0.7); 
+  box-shadow: inset -7px -3px 10px rgba(${r - 10},${g - 10},${b - 10},0.7);
+  margin: ${mt}px 0 0 ${ml}px;
+  animation: float ${dur}s ease-in infinite
+  `;
+}
+
+function createBalloons(num) {
+  for (var i = num; i > 0; i--) {
+    var balloon = document.createElement("div");
+    balloon.className = "balloon";
+    balloon.style.cssText = getRandomStyles();
+    balloonContainer.append(balloon);
+  }
+}
+
+function removeBalloons() {
+  balloonContainer.style.opacity = 0;
+  setTimeout(() => {
+    balloonContainer.remove()
+  }, 500)
+}
+
+window.addEventListener("load", () => {
+  createBalloons(30)
+});
+// age calc
+function calculateAge(birthDate) {
+  const today = new Date();
+  const birth = new Date(birthDate);
+
+  let years = today.getFullYear() - birth.getFullYear();
+  let months = today.getMonth() - birth.getMonth();
+  let days = today.getDate() - birth.getDate();
+
+  // Adjust months and years if needed
+  if (days < 0) {
+    months -= 1;
+    days += new Date(today.getFullYear(), today.getMonth(), 0).getDate(); // Days in the previous month
+  }
+
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+
+  return { years, months, days };
+}
+
+function getNextBirthday(birthDate) {
+  const today = new Date();
+  const birth = new Date(birthDate);
+  let nextBirthday = new Date(today.getFullYear(), birth.getMonth(), birth.getDate());
+
+  // If the birthday this year has passed, calculate for the next year
+  if (nextBirthday < today) {
+    nextBirthday = new Date(today.getFullYear() + 1, birth.getMonth(), birth.getDate());
+  }
+
+  const timeDiff = nextBirthday - today;
+  const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+  const months = Math.floor(days / 30); // Approximation
+  const remainingDays = days % 30;
+
+  return { months, days: remainingDays };
+}
+
+// Predefined birth date
+const birthDate = "1998-01-19"; // Replace with your birth date (YYYY-MM-DD)
+const age = calculateAge(birthDate);
+
+// Check if today is the birthday
+const today = new Date();
+const birth = new Date(birthDate);
+const isBirthday = today.getDate() === birth.getDate() && today.getMonth() === birth.getMonth();
+
+const wishMessage = document.getElementById("wishMessage");
+const result = document.getElementById("result");
+
+if (isBirthday) {
+  wishMessage.innerText = "Happy Birthday Shivam!";
+} else {
+  const nextBirthday = getNextBirthday(birthDate);
+  wishMessage.innerText = `Your next birthday is in ${nextBirthday.months} months and ${nextBirthday.days} days.`;
+}
+
+result.innerText = 
+  `You are ${age.years} years, ${age.months} months, and ${age.days} days old.`;

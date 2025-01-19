@@ -1,0 +1,155 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(150deg,rgb(214, 240, 68), rgb(47, 147, 218));
+}
+
+.box {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    transform-style: preserve-3d;
+    animation: animate 20s linear infinite;
+}
+
+/* .box:hover{
+    animation-play-state: paused;
+} */
+
+
+@keyframes animate {
+    0%{
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    100%{
+        transform: perspective(1000px) rotateY(360deg);
+    }
+}
+
+.box span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i) * 36deg)) translateZ(450px);
+    -webkit-box-reflect: below 2px linear-gradient(transparent, transparent, rgba(4, 4, 4, 0.267));
+}
+
+
+
+.box span img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+    border-radius: 15px;
+    border: 4px double rgb(0, 0, 0);
+}
+
+img:hover{
+    transform: translateY(-2px);
+    
+}
+
+@media(max-width:600px){
+    .box span img{
+       width: 60%;
+       height: 50%;
+       top: 30%;
+       left: 0;
+    }
+    .slidercontainer{
+        display: flex;
+        align-items: center;
+        border: 2px solid red;
+        width: 100%;
+        height: 100%;
+    }
+  
+}
+/* baloon */
+
+
+#balloon-container {
+    box-sizing: border-box;
+    transition: opacity 500ms;
+    position: absolute
+  }
+  
+  .balloon {
+    height: 125px;
+    width: 105px;
+    border-radius: 75% 75% 70% 70%;
+    position: relative;
+  }
+  
+  .balloon:before {
+    content: "";
+    height: 75px;
+    width: 1px;
+    padding: 1px;
+    background-color: #FDFD96;
+    display: block;
+    position: absolute;
+    top: 125px;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  
+  .balloon:after {
+      content: "▲";
+      text-align: center;
+      display: block;
+      position: absolute;
+      color: inherit;
+      top: 120px;
+      left: 0;
+      right: 0;
+      margin: auto;
+  }
+  
+  @keyframes float {
+    from {transform: translateY(100vh);
+    opacity: 1;}
+    to {transform: translateY(-300vh);
+    opacity: 0;}
+  }
+
+
+  .txt{
+    margin: auto;
+    text-align: center;
+  }
+  .txt h1{
+    font-weight: 600;
+    margin-bottom: .5rem;
+    font-size: 1.4rem;
+    }
+    .result{
+        font-weight: 500;
+        font-size: .9rem;
+    }
+  @media(max-width:600px){
+    .txt{
+       width: 100%;
+       border: 2px solid red;
+       position: absolute;
+       top: 10%;
+      }
+  }
