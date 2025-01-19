@@ -76,7 +76,6 @@ img:hover{
     .slidercontainer{
         display: flex;
         align-items: center;
-        border: 2px solid red;
         width: 100%;
         height: 100%;
     }
@@ -148,7 +147,6 @@ img:hover{
   @media(max-width:600px){
     .txt{
        width: 100%;
-       border: 2px solid red;
        position: absolute;
        top: 10%;
       }
