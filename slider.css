@@ -130,10 +130,18 @@ img:hover{
     opacity: 0;}
   }
 
-
+.slidercontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
   .txt{
     margin: auto;
     text-align: center;
+    position: absolute;
+    top: 10%;
+    padding: 0 .5rem;
+
   }
   .txt h1{
     font-weight: 600;
@@ -150,4 +158,7 @@ img:hover{
        position: absolute;
        top: 10%;
       }
+  }
+  br{
+    display: none;
   }
