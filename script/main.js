@@ -105,7 +105,7 @@ function displayCurrentTime() {
 }
 
 function updateAgeAndTime() {
-  const birthDateTime = "1998-01-20T08:40:00"; // Replace with your birth date and time (YYYY-MM-DDTHH:MM:SS)
+  const birthDateTime = "2000-01-26T06:44:00"; // Replace with your birth date and time (YYYY-MM-DDTHH:MM:SS)
   const age = calculateAge(birthDateTime);
 
   const now = new Date();
@@ -117,7 +117,7 @@ function updateAgeAndTime() {
   const timeDisplay = document.getElementById("time");
 
   if (isSameDate) {
-    wishMessage.innerText = "Happy Birthday!";
+    wishMessage.innerText = "Happy Birthday Priti!";
   } else {
     const nextBirthday = getNextBirthDateTime(birthDateTime);
     wishMessage.innerText = `Your next birthday is in ${nextBirthday.days} days, ${nextBirthday.hours} hours, ${nextBirthday.minutes} minutes, and ${nextBirthday.seconds} seconds.`;
