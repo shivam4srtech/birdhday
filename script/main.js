@@ -105,7 +105,7 @@ function displayCurrentTime() {
 }
 
 function updateAgeAndTime() {
-  const birthDateTime = "2000-01-26T06:44:00"; // Replace with your birth date and time (YYYY-MM-DDTHH:MM:SS)
+  const birthDateTime = "2000-01-28T06:44:00"; // Replace with your birth date and time (YYYY-MM-DDTHH:MM:SS)
   const age = calculateAge(birthDateTime);
 
   const now = new Date();
